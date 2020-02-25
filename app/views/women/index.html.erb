@@ -1,0 +1,8 @@
+<h1>All the Women</h1>
+<ul>
+    <% @women.each do |woman| %>
+        <li>
+            <%= link_to woman.name, woman_path(woman) %>
+        </li>
+    <% end %>
+</ul>

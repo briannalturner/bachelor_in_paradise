@@ -1,0 +1,116 @@
+  [1m[35m (2.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateWomen (20200225172730)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "women" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "age" integer, "hometown" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200225172730"]]
+  [1m[35m (1.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateMen (20200225173144)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "men" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "age" integer, "hometown" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (8.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200225173144"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateRelationships (20200225173207)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "relationships" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "woman_id" integer, "man_id" integer, "status" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200225173207"]]
+  [1m[35m (7.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-02-25 17:39:06.879685"], ["updated_at", "2020-02-25 17:39:06.879685"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mWoman Load (0.1ms)[0m  [1m[34mSELECT "women".* FROM "women"[0m
+  [1m[36mMan Load (0.2ms)[0m  [1m[34mSELECT "men".* FROM "men"[0m
+  [1m[36mRelationship Load (0.2ms)[0m  [1m[34mSELECT "relationships".* FROM "relationships"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWoman Create (0.5ms)[0m  [1m[32mINSERT INTO "women" ("name", "age", "hometown", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Demi"], ["age", 25], ["hometown", "Alabama"], ["created_at", "2020-02-25 17:39:15.488303"], ["updated_at", "2020-02-25 17:39:15.488303"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWoman Create (0.4ms)[0m  [1m[32mINSERT INTO "women" ("name", "age", "hometown", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Hannah B."], ["age", 21], ["hometown", "Alabama"], ["created_at", "2020-02-25 17:39:15.492775"], ["updated_at", "2020-02-25 17:39:15.492775"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWoman Create (0.4ms)[0m  [1m[32mINSERT INTO "women" ("name", "age", "hometown", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Nicole"], ["age", 23], ["hometown", "Florida"], ["created_at", "2020-02-25 17:39:15.496711"], ["updated_at", "2020-02-25 17:39:15.496711"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mWoman Create (0.4ms)[0m  [1m[32mINSERT INTO "women" ("name", "age", "hometown", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Hannah G."], ["age", 22], ["hometown", "South Carolina"], ["created_at", "2020-02-25 17:39:15.500650"], ["updated_at", "2020-02-25 17:39:15.500650"]]
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMan Create (0.4ms)[0m  [1m[32mINSERT INTO "men" ("name", "age", "hometown", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Dylan"], ["age", 25], ["hometown", "California"], ["created_at", "2020-02-25 17:39:15.508862"], ["updated_at", "2020-02-25 17:39:15.508862"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMan Create (0.4ms)[0m  [1m[32mINSERT INTO "men" ("name", "age", "hometown", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Blake"], ["age", 45], ["hometown", "North Dakota"], ["created_at", "2020-02-25 17:39:15.512816"], ["updated_at", "2020-02-25 17:39:15.512816"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mMan Create (0.4ms)[0m  [1m[32mINSERT INTO "men" ("name", "age", "hometown", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Mike"], ["age", 23], ["hometown", "Alabama"], ["created_at", "2020-02-25 17:39:15.517095"], ["updated_at", "2020-02-25 17:39:15.517095"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRelationship Create (0.4ms)[0m  [1m[32mINSERT INTO "relationships" ("status", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["status", "engaged"], ["created_at", "2020-02-25 17:39:15.525113"], ["updated_at", "2020-02-25 17:39:15.525113"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRelationship Create (0.4ms)[0m  [1m[32mINSERT INTO "relationships" ("status", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["status", "over"], ["created_at", "2020-02-25 17:39:15.529729"], ["updated_at", "2020-02-25 17:39:15.529729"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRelationship Create (0.4ms)[0m  [1m[32mINSERT INTO "relationships" ("status", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["status", "over"], ["created_at", "2020-02-25 17:39:15.534675"], ["updated_at", "2020-02-25 17:39:15.534675"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for ::1 at 2020-02-25 12:55:20 -0500
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/briannaturner/.rvm/gems/ruby-2.6.1/gems/railties-6.0.2.1/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/briannaturner/.rvm/gems/ruby-2.6.1/gems/railties-6.0.2.1/lib/rails/templates/rails/welcome/index.html.erb (Duration: 12.7ms | Allocations: 480)
+Completed 200 OK in 37ms (Views: 26.2ms | ActiveRecord: 0.0ms | Allocations: 2844)
+
+
+Started GET "/women" for ::1 at 2020-02-25 12:55:35 -0500
+Processing by WomenController#index as HTML
+  Rendering women/index.html.erb within layouts/application
+  Rendered women/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 81)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /Users/briannaturner/Documents/GitHub/Labs/Rails/BiP/bachelor-in-paradise/public/packs
+[Webpacker] Hash: 32e57f147dbdcbbf0c82
+Version: webpack 4.41.6
+Time: 2710ms
+Built at: 02/25/2020 12:55:40 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-bbe9c4a129ab949e0636.js    124 KiB  application  [emitted] [immutable]  application
+js/application-bbe9c4a129ab949e0636.js.map    139 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-bbe9c4a129ab949e0636.js js/application-bbe9c4a129ab949e0636.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 749 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 5639ms (Views: 5619.9ms | ActiveRecord: 0.0ms | Allocations: 28383)
+
+
+Started GET "/women" for ::1 at 2020-02-25 12:58:38 -0500
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by WomenController#index as HTML
+  Rendering women/index.html.erb within layouts/application
+  [1m[36mWoman Load (0.4ms)[0m  [1m[34mSELECT "women".* FROM "women"[0m
+  ↳ app/views/women/index.html.erb:3
+  Rendered women/index.html.erb within layouts/application (Duration: 8.8ms | Allocations: 5044)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 30ms (Views: 21.1ms | ActiveRecord: 1.0ms | Allocations: 11339)
+
+
+Started GET "/women/1" for ::1 at 2020-02-25 12:58:40 -0500
+Processing by WomenController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mWoman Load (0.3ms)[0m  [1m[34mSELECT "women".* FROM "women" WHERE "women"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/women_controller.rb:8:in `show'
+  Rendering women/show.html.erb within layouts/application
+  Rendered women/show.html.erb within layouts/application (Duration: 1.8ms | Allocations: 80)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 9.1ms | ActiveRecord: 0.3ms | Allocations: 5204)
+
+
